@@ -18,6 +18,7 @@ association_table = Table('planeta_favorito', Base.metadata,
     Column('planeta_id', ForeignKey('planeta.id'))
 )
 
+
 class Usuario(Base):
     __tablename__ = 'usuario'
     # Here we define columns for the table person
@@ -29,6 +30,7 @@ class Usuario(Base):
                     secondary=association_table)
     planeta = relationship("Planeta",
                     secondary=association_table)
+
 
 class Personaje(Base):
     __tablename__ = 'personaje'
@@ -52,7 +54,6 @@ class Planeta(Base):
     clima = Column(String(30), nullable=False)
     usuario_id = Column(Integer, ForeignKey('usuario.id'))
     usuario = relationship(Usuario)
-
 
 
     def to_dict(self):
